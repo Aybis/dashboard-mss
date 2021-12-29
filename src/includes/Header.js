@@ -20,7 +20,7 @@ const user = {
 };
 
 const navigation = [
-  { name: 'Home', href: '/', icon: HomeIcon, current: true },
+  { name: 'Home', href: '/dashboard', icon: HomeIcon, current: true },
   {
     name: 'Back to Apps',
     href: 'http://apps.pins.co.id/login',
@@ -29,7 +29,7 @@ const navigation = [
   },
 ];
 
-const userNavigation = [{ name: 'Sign out', href: '/' }];
+const userNavigation = [{ name: 'Sign out', href: '/dashboard' }];
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
@@ -40,8 +40,8 @@ export default function Header() {
   const dispatch = useDispatch();
 
   const handlerLogout = () => {
-    console.log('test');
     dispatch(userLogout());
+    localStorage.removeItem('session');
     window.location.reload();
   };
 
@@ -62,7 +62,7 @@ export default function Header() {
               <div className="relative flex justify-between xl:grid xl:grid-cols-12 lg:gap-8">
                 <div className="flex md:absolute md:left-0 md:inset-y-0 lg:static xl:col-span-2">
                   <div className="flex-shrink-0 flex items-center">
-                    <a href="#">
+                    <a href="/dashboard">
                       <img
                         className="block h-8 w-auto"
                         src="https://tailwindui.com/img/logos/workflow-mark.svg?color=rose&shade=500"
@@ -108,13 +108,13 @@ export default function Header() {
                 </div>
                 <div className="hidden lg:flex lg:items-center lg:justify-end xl:col-span-4">
                   <a
-                    href="#"
+                    href="/dashboard"
                     className="ml-5 flex-shrink-0 bg-white rounded p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-rose-500">
                     <span className="sr-only">View apps</span>
                     <ViewGridIcon className="h-6 w-6" aria-hidden="true" />
                   </a>
                   <a
-                    href="#"
+                    href="/dashboard"
                     className="ml-5 flex-shrink-0 bg-white rounded p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-rose-500">
                     <span className="sr-only">View notifications</span>
                     <BellIcon className="h-6 w-6" aria-hidden="true" />

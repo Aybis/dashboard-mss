@@ -97,11 +97,9 @@ export const userLogout = (data) => async (dispatch) => {
 
     setAuthorizationHeader();
     const result = user.logout();
-
-    localStorage.removeItem('session');
-
     if (result.status === 200) {
-      console.log('logout success', result);
+      localStorage.removeItem('session');
+      window.location.reload();
     }
 
     dispatch({

@@ -31,6 +31,8 @@ function App() {
     USER.isValidation
       ? navigate('/dashboard')
       : (window.location.href = 'http://apps.pins.co.id/module');
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
