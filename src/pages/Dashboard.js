@@ -76,6 +76,7 @@ export default function Dashboard() {
   useEffect(() => {
     dispatch(fetchDataSummary(temporary));
     dispatch(fetchDataByunit(temporary));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch]);
 
   return (
