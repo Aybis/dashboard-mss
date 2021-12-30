@@ -3,8 +3,6 @@ import { useSelector } from 'react-redux';
 export default function Table() {
   const DASHBOARD = useSelector((state) => state.dashboard);
 
-  console.log(DASHBOARD);
-
   return (
     <div className="flex flex-col mt-4">
       <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
