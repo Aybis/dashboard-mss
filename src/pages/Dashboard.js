@@ -10,6 +10,7 @@ import {
   TitlePageAndBreadcumbs,
 } from '../components';
 import Modal from '../components/Modal';
+import Table from '../components/Table';
 import Header from '../includes/Header';
 import Sidebar from '../includes/Sidebar';
 import {
@@ -112,17 +113,21 @@ export default function Dashboard() {
 
               <div className="grid xl:grid-cols-3 gap-6 mt-4">
                 {!DASHBOARD.isLoading ? (
-                  <>
-                    <div className="relative bg-white p-4 lg:col-span-1 col-span-2 rounded-md">
-                      <ChartDoughnut />
-                    </div>
-                    <div className="relative bg-white p-4 col-span-2 rounded-md">
-                      <ChartBar />
-                    </div>
-                    <div className="relative bg-white p-4 col-span-3 rounded-md hidden">
-                      <ChartStackBar />
-                    </div>
-                  </>
+                  DASHBOARD.dataByUnit.length > 0 ? (
+                    <>
+                      <div className="relative bg-white p-4 lg:col-span-1 col-span-2 rounded-md">
+                        <ChartDoughnut />
+                      </div>
+                      <div className="relative bg-white p-4 col-span-2 rounded-md">
+                        <ChartBar />
+                      </div>
+                      <div className="relative bg-white p-4 col-span-3 rounded-md hidden">
+                        <ChartStackBar />
+                      </div>
+                    </>
+                  ) : (
+                    <p>Tidak ada data </p>
+                  )
                 ) : (
                   <p>Loading ....</p>
                 )}
@@ -135,7 +140,10 @@ export default function Dashboard() {
         isOpen={openModal}
         handlerOpen={() => setopenModal(false)}
         title={titleModal}>
-        <p>List Detail Status {titleModal}</p>
+        <div className="relative mb-6">
+          <h1 className="font-medium text-gray-700 mt-8">List {titleModal}</h1>
+          <Table />
+        </div>
       </Modal>
     </div>
   );

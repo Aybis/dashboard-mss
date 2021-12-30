@@ -1,5 +1,4 @@
 import { FireIcon, HomeIcon } from '@heroicons/react/outline';
-import { useSelector } from 'react-redux';
 
 const navigation = [
   { name: 'Home', href: '/', icon: HomeIcon, current: true },
@@ -16,9 +15,7 @@ function classNames(...classes) {
 }
 
 export default function Sidebar() {
-  const USER = useSelector((state) => state.user);
-
-  let token = USER.auth.access_token;
+  let token = JSON.parse(localStorage.getItem('session'));
 
   const communities = [
     { name: 'BDM', href: `http://bdm.pins.co.id/?tkey=${token}` },
