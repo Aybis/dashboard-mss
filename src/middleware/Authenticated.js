@@ -1,18 +1,3 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import {
-  Routes,
-  Route,
-  Link,
-  useNavigate,
-  useLocation,
-  Navigate,
-  Outlet,
-} from 'react-router-dom';
-import user from '../config/api/user';
-import { setAuthorizationHeader } from '../config/axios';
-import { setProfile } from '../redux/actions/user';
-
 export default function Authenticated({ children }) {
   const ok = JSON.parse(localStorage.getItem('session'));
   console.log(ok);

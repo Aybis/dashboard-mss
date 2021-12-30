@@ -3,7 +3,6 @@ import { useDispatch } from 'react-redux';
 import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import user from './config/api/user';
 import { setAuthorizationHeader } from './config/axios';
-import Authenticated from './middleware/Authenticated';
 import NotFound from './pages/404';
 import Dashboard from './pages/Dashboard';
 import Home from './pages/Home';

@@ -11,6 +11,7 @@ export default function Home() {
     return () => {
       clearTimeout(timeOut);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <div className="relative min-h-screen bg-zinc-50 flex justify-center items-center">
