@@ -11,16 +11,16 @@ import { useSelector } from 'react-redux';
 const Status = ({ handlerClickDetail }) => {
   const DASHBOARD = useSelector((state) => state.dashboard);
 
-  const sortWithKnownPrefix = (prefix, arr) => {
-    // Get the non-prefix elements
-    var rest = arr.filter(function (item) {
-      return prefix.indexOf(item.status_id) === -1;
-    });
-    // Concatenate the prefix and the sorted non-prefix elements
-    return prefix.concat(rest.sort());
-  };
+  // const sortWithKnownPrefix = (prefix, arr) => {
+  //   // Get the non-prefix elements
+  //   var rest = arr.filter(function (item) {
+  //     return prefix.indexOf(item.status_id) === -1;
+  //   });
+  //   // Concatenate the prefix and the sorted non-prefix elements
+  //   return prefix.concat(rest.sort());
+  // };
 
-  sortWithKnownPrefix(['4', '3', '6', '1', '7', '5'], DASHBOARD.data);
+  // sortWithKnownPrefix(['4', '3', '6', '1', '7', '5'], DASHBOARD.data);
   return (
     <>
       <h3 className="text-lg leading-6 font-semibold text-gray-900">
@@ -29,7 +29,8 @@ const Status = ({ handlerClickDetail }) => {
 
       <div className="relative my-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 3xl:grid-cols-4 gap-6">
-          {DASHBOARD.data.length > 0 ? (
+          {!DASHBOARD.isLoading ? (
+            DASHBOARD.data.length > 0 &&
             DASHBOARD.data.map((item) => (
               <div
                 key={Math.random()}
@@ -131,7 +132,7 @@ const Status = ({ handlerClickDetail }) => {
               </div>
             ))
           ) : (
-            <p>Loading ....</p>
+            <p>Loading .....</p>
           )}
         </div>
       </div>

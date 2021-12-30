@@ -17,7 +17,7 @@ export default function foo(state = initialState, action) {
       return {
         ...state,
         auth: action.payload,
-        isValidation: action.payload,
+        isValidation: true,
       };
 
     case type.PROFILE:

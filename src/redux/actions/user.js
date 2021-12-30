@@ -7,15 +7,26 @@ export const setAuthentication = (data) => ({
   payload: data,
 });
 
+export const setSession = (data) => ({
+  type: type.SESSION,
+  payload: data,
+});
+
+export const setProfile = (data) => ({
+  type: type.PROFILE,
+  payload: data,
+});
+
 export const setValidationUser = (token) => async (dispatch) => {
   try {
     dispatch({
       type: type.LOADING,
       payload: true,
     });
+
     localStorage.setItem('session', JSON.stringify(token));
 
-    setAuthorizationHeader();
+    setAuthorizationHeader(token);
 
     const result = await user.detailUser();
 

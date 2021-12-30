@@ -65,7 +65,7 @@ export default function Header() {
                     <a href="/dashboard">
                       <img
                         className="block h-8 w-auto"
-                        src="https://tailwindui.com/img/logos/workflow-mark.svg?color=rose&shade=500"
+                        src="http://apps.pins.co.id/assets/keen/assets/img/pins.png"
                         alt="Workflow"
                       />
                     </a>

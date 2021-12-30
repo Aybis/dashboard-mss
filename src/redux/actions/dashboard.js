@@ -6,6 +6,10 @@ import * as type from '../types/dashboard';
 export const fetchDataSummary =
   ({ month, year }) =>
   async (dispatch) => {
+    dispatch({
+      type: type.LOADING,
+      payload: true,
+    });
     try {
       setAuthorizationHeader();
       const result = await dashboard.dataSummary({
@@ -18,6 +22,10 @@ export const fetchDataSummary =
         dispatch({
           type: type.FETCH_DATA,
           payload: result.data.data,
+        });
+        dispatch({
+          type: type.LOADING,
+          payload: false,
         });
       }
     } catch (error) {
@@ -42,6 +50,10 @@ export const fetchDataDetailByStatus =
           type: type.FETCH_DATA_DETAIL,
           payload: result.data.data,
         });
+        dispatch({
+          type: type.LOADING,
+          payload: false,
+        });
       }
     } catch (error) {
       console.log('error', error);
@@ -51,6 +63,10 @@ export const fetchDataDetailByStatus =
 export const fetchDataByunit =
   ({ month, year }) =>
   async (dispatch) => {
+    dispatch({
+      type: type.LOADING,
+      payload: true,
+    });
     try {
       setAuthorizationHeader();
       const result = await dashboard.dataByUnit({
@@ -64,6 +80,10 @@ export const fetchDataByunit =
         dispatch({
           type: type.FETCH_DATA_BY_UNIT,
           payload: result.data.data,
+        });
+        dispatch({
+          type: type.LOADING,
+          payload: false,
         });
       }
     } catch (error) {

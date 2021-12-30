@@ -5,7 +5,7 @@ const initialState = {
   dataDetail: {},
   dataByUnit: {},
   dataWonAndLose: {},
-  isLoading: true,
+  isLoading: false,
   isError: false,
   status: 'idle',
   isMessage: '',

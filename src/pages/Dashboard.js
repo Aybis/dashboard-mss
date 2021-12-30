@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import {
   ChartBar,
@@ -18,6 +19,7 @@ import {
 } from '../redux/actions/dashboard';
 
 export default function Dashboard() {
+  const DASHBOARD = useSelector((state) => state.dashboard);
   const dispatch = useDispatch();
   const [openModal, setopenModal] = useState(false);
   const [titleModal, settitleModal] = useState('');
@@ -69,7 +71,11 @@ export default function Dashboard() {
     setopenModal(true);
     settitleModal(item.name);
     dispatch(
-      fetchDataDetailByStatus(item.status_id, temporary.month, temporary.year),
+      fetchDataDetailByStatus({
+        id: item.status_id,
+        month: temporary.month,
+        year: temporary.year,
+      }),
     );
   };
 
@@ -105,15 +111,21 @@ export default function Dashboard() {
               </h1>
 
               <div className="grid xl:grid-cols-3 gap-6 mt-4">
-                <div className="relative bg-white p-4 col-span-1 rounded-md">
-                  <ChartDoughnut />
-                </div>
-                <div className="relative bg-white p-4 col-span-2 rounded-md">
-                  <ChartBar />
-                </div>
-                <div className="relative bg-white p-4 col-span-3 rounded-md hidden">
-                  <ChartStackBar />
-                </div>
+                {!DASHBOARD.isLoading ? (
+                  <>
+                    <div className="relative bg-white p-4 lg:col-span-1 col-span-2 rounded-md">
+                      <ChartDoughnut />
+                    </div>
+                    <div className="relative bg-white p-4 col-span-2 rounded-md">
+                      <ChartBar />
+                    </div>
+                    <div className="relative bg-white p-4 col-span-3 rounded-md hidden">
+                      <ChartStackBar />
+                    </div>
+                  </>
+                ) : (
+                  <p>Loading ....</p>
+                )}
               </div>
             </div>
           </main>

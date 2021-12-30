@@ -57,5 +57,5 @@ export default function ChartDoughnut() {
     ],
   };
 
-  return <Doughnut data={data} options={options} height={100} />;
+  return <Doughnut data={data} options={options} />;
 }
